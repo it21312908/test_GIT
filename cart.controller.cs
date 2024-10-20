@@ -26,12 +26,6 @@ namespace BreezeBuy.Controllers
                 return BadRequest(ModelState);
             }
 
-            try
-            {
-                // Add multiple products to the cart
-                await _cartService.AddMultipleProductsToCartAsync(request.UserId, request.Items);
-                return Ok(new { message = "Products added to cart successfully." });
-            }
             catch (KeyNotFoundException ex)
             {
                 return NotFound(new { message = ex.Message });
@@ -43,10 +37,6 @@ namespace BreezeBuy.Controllers
         }
     }
 
-    // Request model for adding multiple items to the cart
-    public class AddMultipleItemsRequest
-    {
-        public string UserId { get; set; }
-        public List<CartItem> Items { get; set; }
-    }
+
+   
 }

@@ -17,19 +17,6 @@ namespace BreezeBuy.Controllers
             _categoryService = categoryService;
         }
 
-
-        // GET: api/category/{id}
-        [HttpGet("{id:length(24)}", Name = "GetCategory")]
-        public async Task<ActionResult<Category>> GetById(string id)
-        {
-            var category = await _categoryService.GetCategoryByIdAsync(id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-            return Ok(category);
-        }
-
         // POST: api/category
         [HttpPost]
         public async Task<ActionResult<Category>> Create(Category newCategory)
